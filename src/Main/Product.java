@@ -1,29 +1,19 @@
 package Main;
 
-public class Minuman {
+public class Product {
     String name;
-    private String warna;
     private String category;
     protected double harga;
     public int quantity;
 
     protected double discountRate;
 
-    public Minuman(String name, String warna, int harga, String category, int quantity, double discountRate) {
+    public Product(String name, int harga, String category, int quantity, double discountRate) {
         this.name = name;
-        this.warna = warna;
         this.harga = harga;
         this.category = category;
         this.quantity = quantity;
         this.discountRate = discountRate;
-    }
-
-    public String getWarna() {
-        return warna;
-    }
-
-    public void setWarna(String warna) {
-        this.warna = warna;
     }
 
     public double getHarga() {
@@ -87,7 +77,6 @@ public class Minuman {
     public void display() {
         System.out.println("Informasi Minuman : ");
         System.out.println("Name: " + name);
-        System.out.println("Warna: " + warna);
         System.out.println("Harga Rp. : " + String.format("%,.2f", getHarga()));
         System.out.println("Category: " + category);
         System.out.println("Quantity: " + quantity);
