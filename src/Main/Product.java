@@ -28,7 +28,7 @@ public class Product {
         }
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
@@ -48,7 +48,7 @@ public class Product {
         }
     }
 
-    protected double getDicountRate() {
+    public double getDicountRate() {
         return discountRate;
     }
 
@@ -68,11 +68,11 @@ public class Product {
         this.category = category;
     }
 
-    public double calculateTotalPrice() {
-        double total = harga * quantity;
-        double dicount = total * discountRate;
-        return total - dicount;
-    }
+    // public double calculateTotalPrice() {
+    // double total = harga * quantity;
+    // double dicount = total * discountRate;
+    // return total - dicount;
+    // }
 
     public void display() {
         System.out.println("Informasi Minuman : ");
@@ -81,7 +81,8 @@ public class Product {
         System.out.println("Category: " + category);
         System.out.println("Quantity: " + quantity);
         System.out.println("Discount Rate: " + (getDicountRate() * 100) + "%");
-        System.out.println("Total Harga dengan diskon : Rp. " + String.format("%,.2f", calculateTotalPrice()));
+        // System.out.println("Total Harga dengan diskon : Rp. " +
+        // String.format("%,.2f", calculateTotalPrice()));
     }
 
 }
