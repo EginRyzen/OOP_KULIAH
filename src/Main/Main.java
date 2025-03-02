@@ -3,6 +3,8 @@ package Main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Main.menu.tambahMenu;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -15,18 +17,18 @@ public class Main {
 
         do {
             System.out.println("\n=== Kantin Supermarket ===");
-            System.out.println("1. Tambah Menu");
-            System.out.println("2. Hapus Menu");
-            System.out.println("3. Ubah Menu");
-            System.out.println("4. Tampilkan Menu");
-            System.out.println("5. Keluar");
+            System.out.println("1. Tampilkan Menu");
+            System.out.println("2. Tambah Menu");
+            // System.out.println("2. Hapus Menu");
+            // System.out.println("3. Ubah Menu");
+            // System.out.println("5. Keluar");
             System.out.print("Pilih menu: ");
             inputMenu = scanner.nextInt();
             scanner.nextLine(); // Membuang newline
 
             switch (inputMenu) {
-                case 1:
-                    tambahMenu(productList, scanner);
+                case 2:
+                    tambahMenu.addPoduct(productList, scanner);
                     break;
                 // case 2:
                 // hapusMenu(minumanList, scanner);
@@ -60,25 +62,6 @@ public class Main {
             System.out.println();
         }
 
-    }
-
-    // Fungsi menambah menu
-    public static void tambahMenu(ArrayList<Product> productList, Scanner scanner) {
-        System.out.println("\n=== Tambah Menu ===");
-        System.out.print("Nama Produk: ");
-        String name = scanner.nextLine();
-        System.out.print("Harga: ");
-        int harga = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Category: ");
-        String category = scanner.nextLine();
-        System.out.print("Quantity: ");
-        int quantity = scanner.nextInt();
-        System.out.print("Diskon: ");
-        double discountRate = scanner.nextDouble();
-
-        productList.add(new Product(name, harga, category, quantity, discountRate));
-        System.out.println("Produk berhasil ditambahkan!");
     }
 
 }
