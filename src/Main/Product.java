@@ -74,6 +74,12 @@ public class Product {
     // return total - dicount;
     // }
 
+    public String getDetail() {
+        return "Nama: " + name + "\nHarga: " + harga +
+                "\nCategory: " + category + "\nQuantity: " + quantity +
+                "\nDiscount: " + discountRate + "%";
+    }
+
     public void display() {
         System.out.println("Informasi Minuman : ");
         System.out.println("Name: " + name);

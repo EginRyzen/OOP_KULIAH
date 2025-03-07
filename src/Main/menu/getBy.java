@@ -10,7 +10,7 @@ public class getBy {
     // Fungsi untuk menampilkan menu
     public static void getByMenu(ArrayList<Product> productList, Scanner scanner) {
         // Meminta input Index
-        int index = getValidProductId(scanner, productList);
+        int index = getValidProductIndex(scanner, productList);
 
         // Meminta input informasi yang ingin diambil
         int choice = getValidChoice(scanner);
@@ -20,7 +20,7 @@ public class getBy {
     }
 
     // Fungsi untuk meminta input ID yang valid
-    public static int getValidProductId(Scanner scanner, ArrayList<Product> productList) {
+    public static int getValidProductIndex(Scanner scanner, ArrayList<Product> productList) {
         int index;
         while (true) {
             System.out.print("Masukkan Index produk yang ingin Anda ambil: ");
