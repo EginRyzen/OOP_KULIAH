@@ -1,4 +1,8 @@
-package Main;
+package Main.models;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Product {
     String name;
@@ -20,7 +24,7 @@ public class Product {
         return harga;
     }
 
-    protected void setHarga(double harga) {
+    public void setHarga(double harga) {
         if (harga >= 0.0) {
             this.harga = harga;
         } else {
@@ -32,11 +36,11 @@ public class Product {
         return name;
     }
 
-    void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public int getQuatity() {
+    public int getQuantity() {
         return quantity;
     }
 
@@ -48,11 +52,11 @@ public class Product {
         }
     }
 
-    public double getDicountRate() {
+    public double getDiscountRate() {
         return discountRate;
     }
 
-    protected void setDiscountRate(double discountRate) {
+    public void setDiscountRate(double discountRate) {
         if (discountRate >= 0 && discountRate >= 1) {
             this.discountRate = discountRate;
         } else {
@@ -80,13 +84,21 @@ public class Product {
                 "\nDiscount: " + discountRate + "%";
     }
 
+    public static void sortProducts(ArrayList<Product> productList, boolean ascending) {
+        if (ascending) {
+            Collections.sort(productList, Comparator.comparingDouble(Product::getHarga));
+        } else {
+            Collections.sort(productList, Comparator.comparingDouble(Product::getHarga).reversed());
+        }
+    }
+
     public void display() {
         System.out.println("Informasi Minuman : ");
         System.out.println("Name: " + name);
         System.out.println("Harga Rp. : " + String.format("%,.2f", getHarga()));
         System.out.println("Category: " + category);
         System.out.println("Quantity: " + quantity);
-        System.out.println("Discount Rate: " + (getDicountRate() * 100) + "%");
+        System.out.println("Discount Rate: " + (getDiscountRate() * 100) + "%");
         // System.out.println("Total Harga dengan diskon : Rp. " +
         // String.format("%,.2f", calculateTotalPrice()));
     }
