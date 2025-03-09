@@ -166,6 +166,7 @@ public class ProductController {
         System.out.println(produk.getDetail());
     }
 
+    // Sort dengan menggunakan price
     public void sortProductByPrice() {
         System.out.println("\nPilih metode sorting:");
         System.out.println("1. Harga Terendah ke Tertinggi");
@@ -197,6 +198,14 @@ public class ProductController {
             System.out.println(product.getDetail());
         }
 
+    }
+
+    // Search berdasarkan nama
+    public void searchProductByName() {
+        System.out.print("\nMasukkan nama produk yang ingin dicari: ");
+        String searchName = scanner.nextLine();
+
+        Product.searchProductByName(productList, searchName);
     }
 
     // Mendapatkan index produk yang valid

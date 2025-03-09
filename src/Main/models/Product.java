@@ -3,6 +3,7 @@ package Main.models;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class Product {
     String name;
@@ -84,11 +85,27 @@ public class Product {
                 "\nDiscount: " + discountRate + "%";
     }
 
+    // Proses sort harga dari yang mahal atau murah
     public static void sortProducts(ArrayList<Product> productList, boolean ascending) {
         if (ascending) {
             Collections.sort(productList, Comparator.comparingDouble(Product::getHarga));
         } else {
             Collections.sort(productList, Comparator.comparingDouble(Product::getHarga).reversed());
+        }
+    }
+
+    // Search nama barang
+    public static void searchProductByName(List<Product> productList, String searchName) {
+        boolean found = false;
+        System.out.println("\nHasil Pencarian:");
+        for (Product product : productList) {
+            if (product.getName().toLowerCase().contains(searchName.toLowerCase())) {
+                System.out.println(product.getDetail());
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("Produk tidak ditemukan.");
         }
     }
 
