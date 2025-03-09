@@ -17,25 +17,29 @@ public class Main {
         int inputMenu = 0;
 
         do {
-            System.out.println("\n=== Kantin Supermarket ===");
-            System.out.println("1. Tampilkan Menu");
-            System.out.println("2. Tambah Menu");
-            System.out.println("3. Get By Index dengan Encapulation");
-            System.out.println("5. Sorting Harga (Terendah/Tertinggi)");
-            System.out.println("6. Cari Produk berdasarkan Nama");
-            System.out.println("7. Keluar");
+            System.out.println("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            System.out.println("  🍽️  KANTIN SUPERMARKET  🍽️  ");
+            System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            System.out.println("  1️. | 📝 Tampilkan Menu");
+            System.out.println("  2️. | ➕ Tambah Menu");
+            System.out.println("  3️. | 🔍 Get By Index (Encapsulation)");
+            System.out.println("  4️. | ✏️ Edit Produk berdasarkan Index");
+            System.out.println("  5️. | 📊 Sorting Harga (⬇️ Terendah / ⬆️ Tertinggi)");
+            System.out.println("  6️. | 🔎 Cari Produk berdasarkan Nama");
+            System.out.println("  7️. | ❌ Keluar");
+            System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
             boolean validInput = false;
 
             while (!validInput) {
-                System.out.print("Pilih menu: ");
+                System.out.print("👉 Pilih menu: ");
                 if (scanner.hasNextInt()) {
                     inputMenu = scanner.nextInt();
-                    scanner.nextLine(); // Membuang newline
-                    validInput = true; // Jika input valid, keluar dari loop
+                    scanner.nextLine();
+                    validInput = true;
                 } else {
-                    System.out.println("Input tidak valid! Harap masukkan angka.");
-                    scanner.nextLine(); // Membersihkan input yang salah
+                    System.out.println("❌ Input tidak valid! Harap masukkan angka.");
+                    scanner.nextLine();
                 }
             }
 
@@ -61,10 +65,13 @@ public class Main {
                     productController.searchProductByName();
                     break;
                 case 7:
-                    System.out.println("Terima kasih telah menggunakan aplikasi ini!");
+                    System.out.println("\n🚪 Terima kasih telah menggunakan aplikasi ini! 👋");
+                    System.out.println("Created By Egin Sefiano Widodo (2025B)");
                     break;
                 default:
-                    System.out.println("Pilihan tidak valid. Silakan pilih lagi.");
+                    System.out.println("\n⚠️ Pilihan tidak valid! Silakan pilih lagi.");
+                    break;
+
             }
 
         } while (inputMenu != 7);

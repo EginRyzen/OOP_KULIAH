@@ -79,12 +79,6 @@ public class Product {
     // return total - dicount;
     // }
 
-    public String getDetail() {
-        return "Nama: " + name + "\nHarga: " + harga +
-                "\nCategory: " + category + "\nQuantity: " + quantity +
-                "\nDiscount: " + discountRate + "%";
-    }
-
     // Proses sort harga dari yang mahal atau murah
     public static void sortProducts(ArrayList<Product> productList, boolean ascending) {
         if (ascending) {
@@ -100,7 +94,7 @@ public class Product {
         System.out.println("\nHasil Pencarian:");
         for (Product product : productList) {
             if (product.getName().toLowerCase().contains(searchName.toLowerCase())) {
-                System.out.println(product.getDetail());
+                product.display();
                 found = true;
             }
         }
@@ -110,14 +104,14 @@ public class Product {
     }
 
     public void display() {
-        System.out.println("Informasi Minuman : ");
-        System.out.println("Name: " + name);
-        System.out.println("Harga Rp. : " + String.format("%,.2f", getHarga()));
-        System.out.println("Category: " + category);
-        System.out.println("Quantity: " + quantity);
-        System.out.println("Discount Rate: " + (getDiscountRate() * 100) + "%");
-        // System.out.println("Total Harga dengan diskon : Rp. " +
-        // String.format("%,.2f", calculateTotalPrice()));
+        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━");
+        System.out.println("🍹 Informasi Produk: " + name);
+        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━");
+        System.out.println("💰 Harga      : Rp " + String.format("%,.2f", getHarga()));
+        System.out.println("📦 Kategori   : " + category);
+        System.out.println("🔢 Kuantitas  : " + quantity);
+        System.out.println("🎁 Diskon     : " + (getDiscountRate() * 100) + "%");
+        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━");
     }
 
 }
