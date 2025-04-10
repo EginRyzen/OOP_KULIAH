@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Product {
-    String name;
+    private String name;
     private String category;
     protected double harga;
     public int quantity;
@@ -46,7 +46,7 @@ public class Product {
     }
 
     public void setQuantity(int quantity) {
-        if (quantity > 0) {
+        if (quantity >= 0) {
             this.quantity = quantity;
         } else {
             System.out.println("Invalid set Quantity");
@@ -72,12 +72,6 @@ public class Product {
     public void setCategory(String category) {
         this.category = category;
     }
-
-    // public double calculateTotalPrice() {
-    // double total = harga * quantity;
-    // double dicount = total * discountRate;
-    // return total - dicount;
-    // }
 
     // Proses sort harga dari yang mahal atau murah
     public static void sortProducts(ArrayList<Product> productList, boolean ascending) {

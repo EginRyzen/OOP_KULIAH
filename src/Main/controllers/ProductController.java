@@ -1,6 +1,8 @@
 package Main.controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import Main.models.Product;
 
@@ -338,6 +340,83 @@ public class ProductController {
                 System.out.println("❌ Error: Masukkan angka desimal yang valid!");
                 scanner.next();
             }
+        }
+    }
+
+    public void beliProduk() {
+        System.out.println("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+        System.out.println("🛒 BELI PRODUK");
+        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+
+        if (productList.isEmpty()) {
+            System.out.println("⚠️ Tidak ada produk yang tersedia.");
+            return;
+        }
+
+        double totalBelanja = 0.0;
+        Map<Product, Integer> keranjang = new HashMap<>();
+
+        while (true) {
+            // Tampilkan semua produk
+            System.out.println("\n📦 Daftar Produk:");
+            for (int i = 0; i < productList.size(); i++) {
+                Product p = productList.get(i);
+                System.out
+                        .println(
+                                (i + 1) + ". " + p.getName() + " - Rp. " + p.getHarga() + " - Stok: "
+                                        + p.getQuantity());
+            }
+
+            System.out.print("\nPilih nomor produk yang ingin dibeli (0 untuk selesai): ");
+            int pilihan;
+            try {
+                pilihan = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("❌ Masukkan angka yang valid!");
+                continue;
+            }
+
+            if (pilihan == 0)
+                break;
+            if (pilihan < 1 || pilihan > productList.size()) {
+                System.out.println("❌ Nomor produk tidak tersedia!");
+                continue;
+            }
+
+            Product selectedProduct = productList.get(pilihan - 1);
+
+            System.out.print("Masukkan jumlah yang ingin dibeli: ");
+            int jumlah;
+            try {
+                jumlah = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("❌ Masukkan jumlah dalam angka!");
+                continue;
+            }
+
+            if (jumlah <= 0 || jumlah > selectedProduct.getQuantity()) {
+                System.out.println("❌ Jumlah tidak valid atau stok tidak mencukupi!");
+                continue;
+            } else {
+                selectedProduct.setQuantity(selectedProduct.getQuantity() - jumlah);
+                keranjang.put(selectedProduct, keranjang.getOrDefault(selectedProduct, 0) + jumlah);
+                totalBelanja += selectedProduct.getHarga() * jumlah;
+
+                System.out.println("✅ Produk ditambahkan ke keranjang.");
+            }
+        }
+
+        // Tampilkan ringkasan belanja
+        if (keranjang.isEmpty()) {
+            System.out.println("🛒 Anda tidak membeli produk apapun.");
+        } else {
+            System.out.println("\n🧾 Ringkasan Pembelian:");
+            for (Map.Entry<Product, Integer> entry : keranjang.entrySet()) {
+                Product p = entry.getKey();
+                int qty = entry.getValue();
+                System.out.println("- " + p.getName() + " x " + qty + " = Rp" + (p.getHarga() * qty));
+            }
+            System.out.println("💰 Total Belanja: Rp" + totalBelanja);
         }
     }
 
